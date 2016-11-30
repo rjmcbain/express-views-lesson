@@ -1,6 +1,8 @@
 ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 # Views in Express
 
+<!--Didn't get started till 10...goddamit so many questions on EJS. -->
+
 <!--9:35 5 minutes -->
 
 <!-- Raise your hand if you're tired of displaying JSON day in and day out.  Today, we're going to give some more power to our back-end.  Today, we will introduce server-side rendering, creating pages with the full support of all three amigos: HTML, CSS, and JS. -->
@@ -95,6 +97,8 @@ Ok, you've done this before.  Set up your form real quick in `candy/form.ejs` wi
 </fieldset>
 ```
 -->
+
+<!--10:25 -->
 
 <!--10:00 10 minutes -->
 <!--half-mast -->
@@ -211,6 +215,8 @@ Now let's create a `<body>` and show all of our candies, with their name and col
 </body>
 ```
 
+<!--11:17 actually -->
+
 Now we can use partials within our layout.ejs page.  The method we use is `include`:
 
 ```html
@@ -259,7 +265,7 @@ Now your `layout.ejs` page should look like this:
 
 ## Independent Practice
 
-> ***Note:*** This can be a pair programming activity or done independently
+> ***Note:*** This will be a pair programming activity
 
 Expand on this application by doing the following:
 
