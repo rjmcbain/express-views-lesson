@@ -29,7 +29,7 @@ We are going to return to our `candies` app to focus on how to add views using E
 
 ## Setting up our app to use EJS - Catch-up
 
-First, let's require `ejs` in our applications `package.json`.  In dependencies, add:
+First, let's require `ejs`. In our applications `package.json`, inside dependencies, add:
 
 ```json
 "ejs": "^2.4.2",
@@ -39,9 +39,11 @@ where you see
 
 `// require ejs 2.4.2 //`
 
-...and then:
+...and then run:
 
 `npm install`
+
+Next, we will need to set up our database.  Run `node db/seed.js` and you should see that the candies were created in Terminal.
 
 Now, let's take a look at our `app.js` file and add the following:
 
@@ -51,11 +53,11 @@ app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 ```
 
-Let's look at a few things going on here: `path` is a core Node module dealing with paths.  In our example, we've added the [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) method. For us, this normalizes all the arguments into a path string which will help when we use the `__dirname` global variable and a file or folder.  After adding this, our Node app's view folder will look like:  `app/views`
+Let's look at a few things going on here: `path` is a core Node module dealing with paths.  In our example, we've used the [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) method, which combines the directory that `app.js` is in (`app`) with `views` to tell our node app to look for views inside `app/views`.
 
 The second `app.set()` tells Express to use the ejs templating engine. This allows you to embed JavaScript to work with data (especially with conditionals and loops) in your views.  For example, we can choose not to render partials if a user is already logged in. The file path to your view files now will end in `.ejs`
 
-The middle line requires the `ejs` module in our app for files it encounters with the `.ejs` file extension. More specifically, it requires the `renderFile` method we used earlier.
+The middle line requires the `ejs` module in our app for files it encounters with the `.ejs` file extension. More specifically, it requires the `renderFile` method we used in our [EJS Intro](https://github.com/den-wdi-2/intro-ejs).
 
 Since we're ready to use `.ejs` now, let's set up our file structure to make sure our application can call the files properly. Create the following folder structure:
 
@@ -67,16 +69,6 @@ Since we're ready to use `.ejs` now, let's set up our file structure to make sur
 ----- layout.ejs
 
 ```
-
-#### More Middleware We Might Use:
-* [EJS](https://www.npmjs.com/package/ejs)
-* [body-parser](https://www.npmjs.com/package/body-parser)
-* [method-override](https://www.npmjs.com/package/method-override)
-* [lazy-cache](https://www.npmjs.com/package/lazy-cache)
-* [express-helpers](https://www.npmjs.com/package/express-helpers)
-* [path](https://docs.nodejitsu.com/articles/file-system/how-to-use-the-path-module/)
-* [morgan](https://www.npmjs.com/package/morgan)
-* [cookie-parser](https://www.npmjs.com/package/cookie-parser) 
 
 <!--9:50 10 minutes -->
 
@@ -90,7 +82,7 @@ Ok, you've done this before.  Set up your form real quick in `candy/form.ejs` wi
 - A submit button
 
 <!--
-> Note: Provide students with the correct answer once time is up
+> Note: Provide students with the correct answer a couple minutes before time up
 
 ```html
 <h3>Create Candy!</h3>
@@ -104,15 +96,17 @@ Ok, you've done this before.  Set up your form real quick in `candy/form.ejs` wi
 ```
 -->
 
-<!--10:00 15 minutes -->
+<!--10:00 10 minutes -->
+<!--half-mast -->
 
 ## Set up our layout to iterate over data - Catch-up
 
-Let's create an index page that will double as our form.  But first let's make sure our application is set up to pass data from our database to our views if a user visits the `/candies` endpoint.
+Let's create an index page that will double as our form.  But first, let's make sure our application is set up to pass data from our database to our views if a user visits the `/candies` endpoint.
 
 First, in our `config/routes.js` file, let's make sure our app can both get a list of all the candies and post a new candy from the same endpoint:
 
 ```javascript
+// require the controller
 var candiesController = require('../controllers/candies');
 
 // http://127.0.0.1:3000/candies
@@ -125,7 +119,7 @@ router.route('/candies')
    .post(candiesController.createCandy);
 ```
 
-First, we require the controllers, then we set the candies routes and the `GET` AND `POST` actions that will occur when hitting this endpoint.  Now let's define these methods in our controller: `.getAll` and `.createCandy`.  We'll need to set up error handling and serve the response to the correct view with `.render`.  First, let's start with the `.getAll` function, together:
+First, we require the controllers, then we set the candies routes and the `GET` AND `POST` actions that will occur when hitting this endpoint.  Now, let's define these methods in our controller: `.getAll` and `.createCandy`.  We'll need to set up error handling and serve the response to the correct view with `.render`.  First, let's start with the `.getAll` function, together:
 
 ```javascript
 // GET
@@ -138,9 +132,13 @@ function getAll(request, response) {
 }
 ```
 
-<!-- Start server and go to http://localhost:3000/candies --we won't see anything but there will be a note in the console. -->
+<!-- End half-mast -->
 
-## Write a `createCandy` method that will pull from `name` and `color` inputs - Independent Practice (5 mins)
+<!--10:10 5 minutes -->
+
+## Write a `createCandy` method that will pull from `name` and `color` inputs - Independent Practice
+
+<!--Ask students how they will build candy (using request.body) -->
 
 ```javascript
 // POST
@@ -171,6 +169,8 @@ function createCandy(request, response) {
 
 <!--10:15 15 minutes -->
 
+<!-- Start server and go to http://localhost:3000/candies --we won't see anything but there will be a note in the Terminal. -->
+
 ## Let's make our layout! Code along
 
 First, all the header stuff is exactly the same as it would be in a `.html` file - in `layout.ejs`:
@@ -181,9 +181,7 @@ First, all the header stuff is exactly the same as it would be in a `.html` file
 <head>
     <meta charset="UTF-8">
     <title>Candy App</title>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
 </head>
 ```
 
@@ -232,9 +230,7 @@ Now your `layout.ejs` page should look like this:
 <head>
     <meta charset="UTF-8">
     <title>Candy App</title>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="stylesheets/main.css" /></head>
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css" /></head>
 <body>
     <h1>
         <a target="_blank" href="https://www.youtube.com/watch?v=mKli0y-Xr-Q">Candy Shoppe</a>
@@ -257,9 +253,11 @@ Now your `layout.ejs` page should look like this:
 </html>
 ```
 
+<!--Go to candy shoppe link, then try to "Submit", see what happens-->
+
 <!--10:30 15 minutes -->
 
-## Independent Practice (15 mins)
+## Independent Practice
 
 > ***Note:*** This can be a pair programming activity or done independently
 
@@ -285,6 +283,15 @@ Expand on this application by doing the following:
 - Explain how `ejs` lets us render dynamic data on a particular view.
 - Identify some middleware we are using and explain why you might or might not use it again.
 
+#### Common Middleware We Might Use:
+* [EJS](https://www.npmjs.com/package/ejs)
+* [body-parser](https://www.npmjs.com/package/body-parser)
+* [method-override](https://www.npmjs.com/package/method-override)
+* [lazy-cache](https://www.npmjs.com/package/lazy-cache)
+* [express-helpers](https://www.npmjs.com/package/express-helpers)
+* [path](https://docs.nodejitsu.com/articles/file-system/how-to-use-the-path-module/)
+* [morgan](https://www.npmjs.com/package/morgan)
+* [cookie-parser](https://www.npmjs.com/package/cookie-parser) 
 
 ## Licensing
 All content is licensed under a CC­BY­NC­SA 4.0 license.
