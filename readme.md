@@ -31,7 +31,7 @@ We are going to return to our `candies` app to focus on how to add views using E
 
 ## Setting up our app to use EJS - Catch-up
 
-First, let's require `ejs`. In our applications `package.json`, inside dependencies, add:
+First, let's require `ejs`. In our application's `package.json`, inside dependencies, add:
 
 ```json
 "ejs": "^2.4.2",
@@ -57,11 +57,11 @@ app.set('view engine', 'ejs');
 
 Let's look at a few things going on here: `path` is a core Node module dealing with paths.  In our example, we've used the [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) method, which combines the directory that `app.js` is in (`app`) with `views` to tell our node app to look for views inside `app/views`.
 
-The second `app.set()` tells Express to use the ejs templating engine. This allows you to embed JavaScript to work with data (especially with conditionals and loops) in your views.  For example, we can choose not to render partials if a user is already logged in. The file path to your view files now will end in `.ejs`
-
 The middle line requires the `ejs` module in our app for files it encounters with the `.ejs` file extension. More specifically, it requires the `renderFile` method we used in our [EJS Intro](https://github.com/den-wdi-2/intro-ejs).
 
-Since we're ready to use `.ejs` now, let's set up our file structure to make sure our application can call the files properly. Create the following folder structure:
+The second `app.set()` tells Express to use the ejs templating engine. This allows you to embed JavaScript to work with data (especially with conditionals and loops) in your views.  For example, we can choose not to render the login section of our page if a user is already logged in. The file path to your view files now will end in `.ejs`
+
+Since we're ready to use `.ejs` now, let's set up our file structure to make sure our application can call the files properly. Create the following folder structure inside the `app` folder:
 
 ```
 - views/
@@ -83,22 +83,22 @@ Ok, you've done this before.  Set up your form real quick in `candy/form.ejs` wi
 - Two inputs for name and color that have placeholders
 - A submit button
 
+Note that HTML is always valid EJS, so you can do this entirely in HTML.
+
 <!--
 > Note: Provide students with the correct answer a couple minutes before time up
 
 ```html
 <h3>Create Candy!</h3>
-<fieldset>
-  <form method="POST" action="/candies">
-    <input name="name" placeholder="Name"/>
-    <input name="color" placeholder="Color"/>
-    <input type="submit" value="Submit">
-  </form>
-</fieldset>
+<form method="POST" action="/candies">
+  <input name="name" placeholder="Name"/>
+  <input name="color" placeholder="Color"/>
+  <input type="submit" value="Submit">
+</form>
 ```
 -->
 
-<!--10:25 -->
+<!--10:25 WDI2-->
 
 <!--10:00 10 minutes -->
 <!--half-mast -->
@@ -193,7 +193,7 @@ First, all the header stuff is exactly the same as it would be in a `.html` file
 
 Even though this is an `.ejs` file we're able to write html because we've set up our app to use the ejs templating engine, which can render HTML **and** embedded JavaScript.
 
-Now, we're going to do two things.  First, because we're we're pulling `candies` from our database, we'll have access to all of our `candies` and their associated attributes.  So let's iterate over that array with JavaScript.  Just like earlier, we specify that what's being read is JavaScript with opening and closing `<% %>`, if we want the code to execute; with `<%= %>` if we want the code to execute **and render** on the browser. 
+Now, we're going to do two things.  First, because we're pulling `candies` from our database, we'll have access to all of our `candies` and their associated attributes.  So let's iterate over that array with JavaScript.  Just like earlier, we specify that what's being read is JavaScript with opening and closing `<% %>`, if we want the code to execute; with `<%= %>` if we want the code to execute **and render** on the browser. 
 
 > Note: Recent versions of EJS have [a few more options](https://www.npmjs.com/package/ejs#tags)
 
@@ -215,9 +215,9 @@ Now let's create a `<body>` and show all of our candies, with their name and col
 </body>
 ```
 
-<!--11:17 actually -->
+<!--11:17 actually WDI2-->
 
-Now we can use partials within our layout.ejs page.  The method we use is `include`:
+Now we can use partials within our `layout.ejs` page.  The method we use is `include`:
 
 ```html
 ...
@@ -269,7 +269,7 @@ Now your `layout.ejs` page should look like this:
 
 Expand on this application by doing the following:
 
-- Create a footer as a separate partial and render it in the layout.ejs file
+- Create a footer as a separate partial and render it in the layout.ejs file, the same way we added the form partial
   - In the footer add in "Candies ©"
 - Add a link to an update page to each candy on your `/candies` page, with the `link_to` helper\*
   - This link should go to `edit/<candy_id>`, and should say "Update"
