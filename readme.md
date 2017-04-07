@@ -1,8 +1,9 @@
 ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 # Views in Express
 
-<!--Didn't get started till 10...goddamit so many questions on EJS. -->
+<!--Didn't get started till 10 in WDI2...goddamit so many questions on EJS. -->
 
+<!--9:35 WDI3-->
 <!--9:35 5 minutes -->
 
 <!-- Raise your hand if you're tired of displaying JSON day in and day out.  Today, we're going to give some more power to our back-end.  Today, we will introduce server-side rendering, creating pages with the full support of all three amigos: HTML, CSS, and JS. -->
@@ -55,9 +56,11 @@ app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 ```
 
+<!--WDI3 9:46 when turning over to devs -->
+
 Let's look at a few things going on here: `path` is a core Node module dealing with paths.  In our example, we've used the [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) method, which combines the directory that `app.js` is in (`app`) with `views` to tell our node app to look for views inside `app/views`.
 
-The middle line requires the `ejs` module in our app for files it encounters with the `.ejs` file extension. More specifically, it requires the `renderFile` method we used in our [EJS Intro](https://github.com/den-wdi-2/intro-ejs).
+The middle line requires the `ejs` module in our app for files it encounters with the `.ejs` file extension. More specifically, it requires the `renderFile` method we used in our [EJS Intro](https://github.com/den-materials/intro-ejs).
 
 The second `app.set()` tells Express to use the ejs templating engine. This allows you to embed JavaScript to work with data (especially with conditionals and loops) in your views.  For example, we can choose not to render the login section of our page if a user is already logged in. The file path to your view files now will end in `.ejs`
 
@@ -72,6 +75,8 @@ Since we're ready to use `.ejs` now, let's set up our file structure to make sur
 
 ```
 
+<!--9:53 starting to explain WDI3 -->
+<!--9:56 WDI3 when turning over to devs -->
 <!--9:50 10 minutes -->
 
 ## Set up your form - Independent Practice
@@ -100,6 +105,7 @@ Note that HTML is always valid EJS, so you can do this entirely in HTML.
 
 <!--10:25 WDI2-->
 
+<!--10:04, 10:13 turning over to devs -->
 <!--10:00 10 minutes -->
 <!--half-mast -->
 
@@ -138,11 +144,12 @@ function getAll(request, response) {
 
 <!-- End half-mast -->
 
+<!--10:21 WDI3 -->
 <!--10:10 5 minutes -->
 
 ## Write a `createCandy` method that will pull from `name` and `color` inputs - Independent Practice
 
-<!--Ask students how they will build candy (using request.body) -->
+<!--Ask students how they will build candy (using request.body), use mongoose intro as a reference -->
 
 ```javascript
 // POST
@@ -261,6 +268,7 @@ Now your `layout.ejs` page should look like this:
 
 <!--Go to candy shoppe link, then try to "Submit", see what happens-->
 
+<!--WDI3 10:54 after giving directions -->
 <!--10:30 15 minutes -->
 
 ## Independent Practice
@@ -288,6 +296,8 @@ Expand on this application by doing the following:
 - Describe how to configure your Express app to use `ejs`.
 - Explain how `ejs` lets us render dynamic data on a particular view.
 - Identify some middleware we are using and explain why you might or might not use it again.
+
+<!--WDI3 finished 11:27 -->
 
 #### Common Middleware We Might Use:
 * [EJS](https://www.npmjs.com/package/ejs)
