@@ -3,6 +3,7 @@
 
 <!--Didn't get started till 10 in WDI2...goddamit so many questions on EJS. -->
 
+<!--9:51 WDI4-->
 <!--9:35 WDI3-->
 <!--9:35 5 minutes -->
 
@@ -48,6 +49,8 @@ where you see
 
 Next, we will need to set up our database.  Run `node db/seed.js` and you should see that the candies were created in Terminal.
 
+<!--9:58 WDI4 turning over to devs -->
+
 Now, let's take a look at our `app.js` file and add the following:
 
 ```javascript
@@ -75,6 +78,8 @@ Since we're ready to use `.ejs` now, let's set up our file structure to make sur
 
 ```
 
+<!--10:07 WDI4 turning over to devs -->
+<!--10:13 WDI4 coming back -->
 <!--9:53 starting to explain WDI3 -->
 <!--9:56 WDI3 when turning over to devs -->
 <!--9:50 10 minutes -->
@@ -87,6 +92,8 @@ Ok, you've done this before.  Set up your form real quick in `candy/form.ejs` wi
 - A form with a POST method that submits to the `/candies` endpoint
 - Two inputs for name and color that have placeholders
 - A submit button
+
+<!--10:16 WDI4 turning over to devs -->
 
 Note that HTML is always valid EJS, so you can do this entirely in HTML.
 
@@ -104,8 +111,9 @@ Note that HTML is always valid EJS, so you can do this entirely in HTML.
 -->
 
 <!--10:25 WDI2-->
+<!--10:22 WDI4 -->
 
-<!--10:04, 10:13 turning over to devs -->
+<!--10:04, 10:13 turning over to devs WDI3-->
 <!--10:00 10 minutes -->
 <!--half-mast -->
 
@@ -129,6 +137,8 @@ router.route('/candies')
    .post(candiesController.createCandy);
 ```
 
+<!--10:26 WDI4 turning over to devs -->
+
 First, we require the controllers, then we set the candies routes and the `GET` AND `POST` actions that will occur when hitting this endpoint.  Now, let's define these methods in our controller: `.getAll` and `.createCandy`.  We'll need to set up error handling and serve the response to the correct view with `.render`.  First, let's start with the `.getAll` function, together:
 
 ```javascript
@@ -145,6 +155,7 @@ function getAll(request, response) {
 <!-- End half-mast -->
 
 <!--10:21 WDI3 -->
+<!--10:34 WDI4 turning over to devs -->
 <!--10:10 5 minutes -->
 
 ## Write a `createCandy` method that will pull from `name` and `color` inputs - Independent Practice
@@ -158,7 +169,7 @@ function createCandy(request, response) {
   // fill in your code here
 
   candy.save(function(error) {
-    if(error) response.json({messsage: 'Could not ceate candy b/c:' + error});
+    if(error) response.json({messsage: 'Could not create candy b/c:' + error});
 
     response.redirect('/candies');
   });  
@@ -223,6 +234,8 @@ Now let's create a `<body>` and show all of our candies, with their name and col
 ```
 
 <!--11:17 actually WDI2-->
+<!--10:48 turning over to devs WDI4 -->
+<!--WDI4 coming back 10:59-->
 
 Now we can use partials within our `layout.ejs` page.  The method we use is `include`:
 
@@ -269,6 +282,7 @@ Now your `layout.ejs` page should look like this:
 <!--Go to candy shoppe link, then try to "Submit", see what happens-->
 
 <!--WDI3 10:54 after giving directions -->
+<!--WDI4 11:15 after giving directions -->
 <!--10:30 15 minutes -->
 
 ## Independent Practice
@@ -289,13 +303,13 @@ Expand on this application by doing the following:
   
 \* Use these [docs](http://www.embeddedjs.com/getting_started.html).
 
+<!--WDI4 11:25 -->
 <!--10:45 5 minutes -->
 
 ## Conclusion (5 mins)
 - Describe the difference between `ejs` views and partials.
 - Describe how to configure your Express app to use `ejs`.
 - Explain how `ejs` lets us render dynamic data on a particular view.
-- Identify some middleware we are using and explain why you might or might not use it again.
 
 <!--WDI3 finished 11:27 -->
 
