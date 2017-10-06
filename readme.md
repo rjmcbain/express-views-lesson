@@ -3,6 +3,7 @@
 
 <!--Didn't get started till 10 in WDI2...goddamit so many questions on EJS. -->
 
+<!--WDI5 9:45 -->
 <!--9:51 WDI4-->
 <!--9:35 WDI3-->
 <!--9:35 5 minutes -->
@@ -59,6 +60,7 @@ app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 ```
 
+<!--WDI5 10:03 -->
 <!--WDI3 9:46 when turning over to devs -->
 
 Let's look at a few things going on here: `path` is a core Node module dealing with paths.  In our example, we've used the [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) method, which combines the directory that `app.js` is in (`app`) with `views` to tell our node app to look for views inside `app/views`.
@@ -112,7 +114,7 @@ Note that HTML is always valid EJS, so you can do this entirely in HTML.
 
 <!--10:25 WDI2-->
 <!--10:22 WDI4 -->
-
+<!--WDI5 10:13  -->
 <!--10:04, 10:13 turning over to devs WDI3-->
 <!--10:00 10 minutes -->
 <!--half-mast -->
@@ -138,6 +140,7 @@ router.route('/candies')
 ```
 
 <!--10:26 WDI4 turning over to devs -->
+<!--WDI5 10:21  -->
 
 First, we require the controllers, then we set the candies routes and the `GET` AND `POST` actions that will occur when hitting this endpoint.  Now, let's define these methods in our controller: `.getAll` and `.createCandy`.  We'll need to set up error handling and serve the response to the correct view with `.render`.  First, let's start with the `.getAll` function, together:
 
@@ -189,6 +192,7 @@ function createCandy(request, response) {
     ```
 -->
 
+<!--10:38 WDI5 -->
 <!--10:15 15 minutes -->
 
 <!-- Start server and go to http://localhost:3000/candies --we won't see anything but there will be a note in the Terminal. -->
@@ -235,6 +239,7 @@ Now let's create a `<body>` and show all of our candies, with their name and col
 
 <!--11:17 actually WDI2-->
 <!--10:48 turning over to devs WDI4 -->
+<!--WDI5 coming back 10:52 -->
 <!--WDI4 coming back 10:59-->
 
 Now we can use partials within our `layout.ejs` page.  The method we use is `include`:
@@ -281,11 +286,14 @@ Now your `layout.ejs` page should look like this:
 
 <!--Go to candy shoppe link, then try to "Submit", see what happens-->
 
+<!--WDI5 10:57, helped unstick devs then took break  -->
 <!--WDI3 10:54 after giving directions -->
 <!--WDI4 11:15 after giving directions -->
 <!--10:30 15 minutes -->
 
 ## Independent Practice
+
+<!--WDI5 11:10 -->
 
 > ***Note:*** This will be a pair programming activity
 
@@ -304,6 +312,7 @@ Expand on this application by doing the following:
 \* Use these [docs](http://www.embeddedjs.com/getting_started.html).
 
 <!--WDI4 11:25 -->
+<!--WDI5 11:40 -->
 <!--10:45 5 minutes -->
 
 ## Conclusion (5 mins)
@@ -312,6 +321,7 @@ Expand on this application by doing the following:
 - Explain how `ejs` lets us render dynamic data on a particular view.
 
 <!--WDI3 finished 11:27 -->
+<!--WDI5 11:53 after going over Q'ns and quickly showing soln code -->
 
 #### Common Middleware We Might Use:
 * [EJS](https://www.npmjs.com/package/ejs)
