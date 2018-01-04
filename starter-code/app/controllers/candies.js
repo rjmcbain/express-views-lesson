@@ -1,10 +1,27 @@
 var Candy = require('../models/Candy');
 
 // GET
-
+  function getAll(req, res) {
+    Candy.find(function(error, candies){
+      if(error) response.json({message: 'Could not find any candy'});
+      console.log("Rendering candies");
+      response.render('layout', {candies: candies});
+    });
+  }
 
 // POST
+  function createCandy(request, response) {
 
+    var candy = new Candy();
+    candy.name = request.body.name;
+    candy.color = request.body.color;
+
+    candy.save(function(error) {
+      if(error) response.json({message: 'Could not create candy because' + error});
+      
+      response.redirect('/candies');
+    });
+  }
 
 // GET
 function getCandy(request, response) {

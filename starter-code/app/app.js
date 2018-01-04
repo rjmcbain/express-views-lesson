@@ -20,9 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // Set up our app to accept to use EJS
-//
-//
-// 
+app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
